@@ -1,7 +1,9 @@
 <template>
 <div id="app">
   <top-nav></top-nav>
+    <div class="container">
   <router-view></router-view>
+</div>
 </div>
 </template>
 
@@ -18,6 +20,10 @@ export default {
 </script>
 
 <style>
+.container {
+  margin: 48px 72px;
+}
+
 body {
     margin: 0;
 }
