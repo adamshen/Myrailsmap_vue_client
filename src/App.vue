@@ -1,28 +1,27 @@
 <template>
 <div id="app">
+  <top-nav></top-nav>
   <router-view></router-view>
 </div>
 </template>
 
 <script>
-import Home from './views/home.vue'
+import TopNav from './components/top_nav.vue'
 
 export default {
   name: 'app',
   data () {
     return {}
   },
-  components: { Home }
+  components: { TopNav }
 }
 </script>
 
 <style>
+body {
+    margin: 0;
+}
+
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

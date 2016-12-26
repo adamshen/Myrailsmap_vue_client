@@ -1,0 +1,60 @@
+<template>
+<div class="phone-viewport">
+  <md-toolbar>
+    <md-button class="md-icon-button" @click="toggleLeftSidenav">
+      <md-icon>menu</md-icon>
+    </md-button>
+
+    <h2 class="md-title">MyRailsMap</h2>
+  </md-toolbar>
+
+  <md-sidenav class="md-left" ref="leftSidenav" @open="open('Left')" @close="close('Left')">
+    <md-toolbar class="md-large">
+      <div class="md-toolbar-container">
+        <div>
+          <h3 class="md-title">SideBar</h3>
+        </div>
+      </div>
+    </md-toolbar>
+
+    <div class="phone-viewport">
+      <md-list>
+        <md-list-item>
+          <md-icon>home</md-icon> <span>Home</span>
+        </md-list-item>
+
+        <md-list-item>
+          <md-icon>library_books</md-icon> <span>Aticle</span>
+        </md-list-item>
+
+        <md-list-item>
+          <md-icon>border_color</md-icon> <span>Note</span>
+        </md-list-item>
+
+        <md-list-item>
+          <md-icon>face</md-icon> <span>About</span>
+
+          <md-divider class="md-inset"></md-divider>
+        </md-list-item>
+      </md-list>
+    </div>
+
+  </md-sidenav>
+</div>
+</template>
+
+<script>
+export default {
+  methods: {
+    toggleLeftSidenav () {
+      this.$refs.leftSidenav.toggle()
+    }
+  }
+}
+</script>
+
+<style>
+.md-toolbar.md-large {
+  min-height: 64px !important;
+}
+</style>

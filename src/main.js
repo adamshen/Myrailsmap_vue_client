@@ -3,6 +3,8 @@
 import Vue from 'vue'
 import App from './App'
 import VueRouter from 'vue-router'
+import VueMaterial from 'vue-material'
+import 'vue-material/dist/vue-material.css'
 
 import Home from './views/home.vue'
 
@@ -17,6 +19,9 @@ const routers = [{
 const router = new VueRouter({
   routes: routers
 })
+
+// UI
+Vue.use(VueMaterial)
 
 /* eslint-disable no-new */
 new Vue({
