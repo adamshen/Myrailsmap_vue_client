@@ -5,7 +5,13 @@
       <md-icon>menu</md-icon>
     </md-button>
 
-    <h2 class="md-title">MyRailsMap</h2>
+    <h2 class="md-title" style="flex: 1">MyRailsMap</h2>
+
+    <md-button class="md-icon-button">
+      <span class="md-icon material-icons">
+        <i class="fa fa-github" aria-hidden="true"></i>
+      </span>
+    </md-button>
   </md-toolbar>
 
   <md-sidenav class="md-left" ref="leftSidenav">
@@ -37,7 +43,7 @@
         </md-list-item>
 
         <div class="sidebar-switch">
-          <md-switch v-model="topics_switch_checked" id="topics_switch" name="topics_switch"  class="md-primary">
+          <md-switch v-model="topics_switch_checked" id="topics_switch" name="topics_switch" class="md-primary">
             Topics
           </md-switch>
         </div>
@@ -51,13 +57,13 @@
 <script>
 export default {
   name: 'top_nav',
-  data: function () {
+  data: function() {
     return {
       topics_switch_checked: false
     }
   },
   methods: {
-    toggleLeftSidenav () {
+    toggleLeftSidenav() {
       this.$refs.leftSidenav.toggle()
     }
   }
