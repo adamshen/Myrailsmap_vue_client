@@ -31,4 +31,4 @@ new Vue({
     App
   },
   router
-}).$mount('#app')
+})
