@@ -23,6 +23,10 @@ const router = new VueRouter({
 // UI
 Vue.use(VueMaterial)
 
+Vue.material.registerTheme('default', {
+  primary: 'blue'
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
