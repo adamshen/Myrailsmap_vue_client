@@ -7,10 +7,8 @@
 
     <h2 class="md-title" style="flex: 1">MyRailsMap</h2>
 
-    <md-button class="md-icon-button">
-      <span class="md-icon material-icons">
-        <i class="fa fa-github" aria-hidden="true"></i>
-      </span>
+    <md-button class="md-icon-button" @click='switchTheme'>
+      <md-icon>highlight</md-icon>
     </md-button>
   </md-toolbar>
 
@@ -55,6 +53,8 @@
 </template>
 
 <script>
+import Theme from '../helper/theme.js'
+
 export default {
   name: 'top_nav',
   data: function() {
@@ -65,6 +65,9 @@ export default {
   methods: {
     toggleLeftSidenav() {
       this.$refs.leftSidenav.toggle()
+    },
+    switchTheme() {
+      Theme.switchNext()
     }
   }
 }

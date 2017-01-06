@@ -6,6 +6,8 @@ import VueRouter from 'vue-router'
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.css'
 
+import Theme from './helper/theme.js'
+
 import Home from './views/home.vue'
 
 // Route
@@ -22,10 +24,8 @@ const router = new VueRouter({
 
 // UI
 Vue.use(VueMaterial)
-
-Vue.material.registerTheme('default', {
-  primary: 'blue'
-})
+Theme.registerAll()
+Vue.material.setCurrentTheme('blue-grey')
 
 /* eslint-disable no-new */
 new Vue({
