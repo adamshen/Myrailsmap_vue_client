@@ -21,7 +21,9 @@ export default {
 
 <style>
 .container {
-  margin: 48px 72px;
+  padding: 48px 72px;
+  display: flex;
+  display: -webkit-flex;
 }
 
 body {
