@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import Theme from '../helper/theme.js'
+import Theme from '../../helper/theme.js'
 
 export default {
   name: 'top_nav',
