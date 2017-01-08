@@ -1,10 +1,9 @@
-row | row-reverse | column | column-reverse
 <template>
 <div class="flex-select-group">
   <div class="flex-selector">
     <md-input-container>
       <label for="flex-direction">Flex Direction</label>
-      <md-select name="flex-direction" id="flex-direction" v-model="flexDirection">
+      <md-select name="flex-direction" id="flex-direction" v-model="flexDirection" @input="changeDirection(flexDirection)">
         <md-option value="row">row</md-option>
         <md-option value="row-reverse">row-reverse</md-option>
         <md-option value="column">column</md-option>
@@ -16,7 +15,7 @@ row | row-reverse | column | column-reverse
   <div class="flex-selector">
     <md-input-container>
       <label for="justify-content">Justify Content</label>
-      <md-select name="justify-content" id="justify-content" v-model="justifyContent">
+      <md-select name="justify-content" id="justify-content" v-model="justifyContent" @input="changeContent(justifyContent)">
         <md-option value="flex-start">flex-start</md-option>
         <md-option value="flex-end">flex-end</md-option>
         <md-option value="center">center</md-option>
@@ -35,18 +34,27 @@ export default {
       flexDirection: '',
       justifyContent: ''
     }
+  },
+  methods: {
+    changeContent: function() {
+      this.$emit('content')
+    },
+    changeDirection: function() {
+      this.$emit('direction')
+    }
   }
 }
 </script>
 
 <style>
 .flex-selector {
-  flex: auto;
   padding-left: 18px;
 }
 
 .flex-select-group {
+  flex: 0 0 auto;
   display: flex;
   display: -webkit-flex;
+  justify-content: center;
 }
 </style>
