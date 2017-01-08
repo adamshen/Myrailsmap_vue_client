@@ -1,11 +1,17 @@
 <template>
-  <p>hello vue</p>
+<flex-select>
+</flex-select>
 </template>
+
 <script>
- export default {
-   data () {
-     return {}
-   },
-   components: {}
- }
+import FlexSelect from '../components/home/flex_select'
+
+export default {
+  data() {
+    return {}
+  },
+  components: {
+    FlexSelect
+  }
+}
 </script>

@@ -24,6 +24,7 @@ export default {
   padding: 48px 72px;
   display: flex;
   display: -webkit-flex;
+  justify-content: center;
 }
 
 body {
