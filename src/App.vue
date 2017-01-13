@@ -1,7 +1,6 @@
 <template>
 <div id="app">
   <top-nav></top-nav>
-    <div class="container">
   <router-view></router-view>
 </div>
 </div>
@@ -20,13 +19,6 @@ export default {
 </script>
 
 <style>
-.container {
-  padding: 48px 72px;
-  display: flex;
-  display: -webkit-flex;
-  justify-content: center;
-}
-
 body {
     margin: 0;
 }
