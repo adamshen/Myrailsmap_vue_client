@@ -11,18 +11,20 @@ import TopNav from './components/layout/top_nav.vue'
 
 export default {
   name: 'app',
-  data () {
+  data() {
     return {}
   },
-  components: { TopNav }
+  components: {
+    TopNav
+  }
 }
 </script>
 
 <style>
 body {
-    margin: 0;
+  margin: 0;
+  background: #f4f4f4 !important;
 }
 
-#app {
-}
+#app {}
 </style>

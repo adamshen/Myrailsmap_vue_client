@@ -42,7 +42,6 @@ export default {
   display: flex;
   display: -webkit-flex;
   justify-content: center;
-  background: #f4f4f4;
 }
 
 .home-banner {

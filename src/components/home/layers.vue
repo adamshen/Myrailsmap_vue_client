@@ -73,3 +73,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.layers{
+  width: 100%;
+}
+</style>
