@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import FlexSelect from '../components/home/flex_select'
+import FlexSelect from '../components/home/FlexSelect'
 import Layers from '../components/home/layers'
 
 export default {
