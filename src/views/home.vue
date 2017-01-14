@@ -4,7 +4,7 @@
     <flex-select></flex-select>
   </div>
   <div class="container">
-    <layers></layers>
+    <flex-box></flex-box>
   </div>
 </div>
 </div>
@@ -12,7 +12,7 @@
 
 <script>
 import FlexSelect from '../components/home/FlexSelect'
-import Layers from '../components/home/layers'
+import FlexBox from '../components/home/FlexBox'
 
 export default {
   data() {
@@ -20,7 +20,7 @@ export default {
   },
   components: {
     FlexSelect,
-    Layers
+    FlexBox
   },
   methods: {}
 }
@@ -32,6 +32,7 @@ export default {
   display: flex;
   display: -webkit-flex;
   justify-content: center;
+  width: 100%;
 }
 
 .home-banner {

@@ -5,9 +5,7 @@
       <label for="flex-direction">Flex Direction</label>
       <md-select name="flex-direction" id="flex-direction" v-model="flexDirection" @input="changeDirection()">
         <md-option value="row">row</md-option>
-        <md-option value="row-reverse">row-reverse</md-option>
         <md-option value="column">column</md-option>
-        <md-option value="column-reverse">row-reverse</md-option>
       </md-select>
     </md-input-container>
   </div>
