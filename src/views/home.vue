@@ -1,13 +1,10 @@
 <template>
 <div>
   <div class="home-banner">
-    <flex-select ref="flex"
-                 @content="setContent($refs.flex.justifyContent)"
-                 @direction="setDirection($refs.flex.flexDirection)">
-    </flex-select>
+    <flex-select></flex-select>
   </div>
   <div class="container">
-    <layers ref="layers"></layers>
+    <layers></layers>
   </div>
 </div>
 </div>
@@ -25,14 +22,7 @@ export default {
     FlexSelect,
     Layers
   },
-  methods: {
-    setContent: function(value) {
-      this.$refs.layers.justifyContent = value
-    },
-    setDirection: function(value) {
-      this.$refs.layers.flexDirection = value
-    }
-  }
+  methods: {}
 }
 </script>
 

@@ -54,6 +54,8 @@
 </template>
 
 <script>
+import Bus from '../../helper/bus.js'
+
 export default {
   data() {
     return {
@@ -70,12 +72,21 @@ export default {
         'flex-wrap': 'wrap'
       }
     }
+  },
+  mounted() {
+    Bus.$on('changeContent', (content) => {
+      this.justifyContent = content
+    })
+
+    Bus.$on('changeDirection', (direction) => {
+      this.flexDirection = direction
+    })
   }
 }
 </script>
 
 <style>
-.layers{
+.layers {
   width: 100%;
 }
 </style>
