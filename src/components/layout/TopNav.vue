@@ -28,11 +28,11 @@
         </md-list-item>
 
         <md-list-item>
-          <md-icon>library_books</md-icon> <span>Aticle</span>
+          <md-icon>videogame_asset</md-icon> <span>Play</span>
         </md-list-item>
 
         <md-list-item>
-          <md-icon>border_color</md-icon> <span>Note</span>
+          <md-icon>library_books</md-icon> <span>Aticle</span>
         </md-list-item>
 
         <md-list-item>
