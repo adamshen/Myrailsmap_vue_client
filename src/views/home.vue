@@ -1,10 +1,8 @@
 <template>
 <div>
   <div class="home-banner">
-    <flex-select></flex-select>
   </div>
   <div class="container">
-    <flex-box></flex-box>
   </div>
 </div>
 </div>
