@@ -1,14 +1,19 @@
 <template>
 <div>
   <div class="home-banner">
-    <div class="banner-text">
-      <i class="material-icons">account_balance</i>
+    <div class="banner-context" :style="shrinkStyle()">
+      <div class="banner-text">
+        <i class="material-icons">account_balance</i>
+      </div>
+      <div class="banner-text">KEEP</div>
+      <div class="banner-text">CALM</div>
+      <div class="banner-text">AND</div>
+      <div class="banner-text">LEARN</div>
+      <div class="banner-text">RAILS</div>
     </div>
-    <div class="banner-text">KEEP</div>
-    <div class="banner-text">CALM</div>
-    <div class="banner-text">AND</div>
-    <div class="banner-text">LEARN</div>
-    <div class="banner-text">RAILS</div>
+    <div class="banner-shrink" @click="toggleBannerShrink()">
+      <i class="material-icons">{{ bannerShrinkIcon() }}</i>
+    </div>
   </div>
   <div class="container">
   </div>
@@ -21,13 +26,28 @@ import FlexBox from '../components/home/FlexBox'
 
 export default {
   data() {
-    return {}
+    return {
+      bannerShrink: true
+    }
   },
   components: {
     FlexSelect,
     FlexBox
   },
-  methods: {}
+  methods: {
+    shrinkStyle() {
+      let flexFlow = this.bannerShrink ? 'column' : 'row'
+      return {
+        'flex-flow': flexFlow
+      }
+    },
+    toggleBannerShrink() {
+      this.bannerShrink = !this.bannerShrink
+    },
+    bannerShrinkIcon() {
+      return this.bannerShrink ? 'keyboard_arrow_up' : 'keyboard_arrow_down'
+    }
+  }
 }
 </script>
 
@@ -42,11 +62,13 @@ export default {
 
 .home-banner {
   padding: 30px;
+}
+
+.banner-context {
   display: flex;
   display: -webkit-flex;
   justify-content: center;
   align-items: center;
-  flex-flow: column;
 }
 
 .banner-text {
@@ -54,7 +76,6 @@ export default {
   line-height: 1.2;
   font-size: 3.0rem;
   color: rgba(0, 0, 0, 0.55);
-  text-align: center;
 }
 
 .banner-text i {
@@ -71,6 +92,17 @@ export default {
 
 .banner-text:last-child {
   font-size: 2.0rem;
+}
+
+.banner-shrink {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: flex-end;
+  cursor: pointer;
+}
+
+.banner-shrink i {
+  font-size: 2.5rem;
 }
 
 .md-theme-blue-grey .home-banner {
