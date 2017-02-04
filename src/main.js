@@ -6,7 +6,7 @@ import VueRouter from 'vue-router'
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.css'
 
-import Theme from './helper/theme.js'
+import Theme from './lib/theme.js'
 
 import Home from './views/home.vue'
 
