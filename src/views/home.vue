@@ -1,7 +1,7 @@
 <template>
 <div>
   <div class="home-banner">
-    <div class="banner-context" :style="shrinkStyle()">
+    <div class="banner-context" :style="dynamicBannerStyle()">
       <div class="banner-text">
         <i class="material-icons">account_balance</i>
       </div>
@@ -11,8 +11,8 @@
       <div class="banner-text">LEARN</div>
       <div class="banner-text">RAILS</div>
     </div>
-    <div class="banner-shrink" @click="toggleBannerShrink()">
-      <i class="material-icons">{{ bannerShrinkIcon() }}</i>
+    <div class="banner-narrow" @click="toggleBannerNarrow()">
+      <i class="material-icons">{{ bannerNarrowIcon() }}</i>
     </div>
   </div>
   <div class="container">
@@ -24,22 +24,21 @@
 export default {
   data() {
     return {
-      bannerShrink: true
+      bannerNarrow: false
     }
   },
   components: {},
   methods: {
-    shrinkStyle() {
-      let flexFlow = this.bannerShrink ? 'column' : 'row'
+    dynamicBannerStyle() {
       return {
-        'flex-flow': flexFlow
+        'flex-flow': this.bannerNarrow ? 'row' : 'column'
       }
     },
-    toggleBannerShrink() {
-      this.bannerShrink = !this.bannerShrink
+    toggleBannerNarrow() {
+      this.bannerNarrow = !this.bannerNarrow
     },
-    bannerShrinkIcon() {
-      return this.bannerShrink ? 'keyboard_arrow_up' : 'keyboard_arrow_down'
+    bannerNarrowIcon() {
+      return this.bannerNarrow ? 'keyboard_arrow_down' : 'keyboard_arrow_up'
     }
   }
 }
@@ -88,14 +87,14 @@ export default {
   font-size: 2.0rem;
 }
 
-.banner-shrink {
+.banner-narrow {
   display: flex;
   display: -webkit-flex;
   justify-content: flex-end;
   cursor: pointer;
 }
 
-.banner-shrink i {
+.banner-narrow i {
   font-size: 2.5rem;
 }
 
