@@ -23,19 +23,19 @@
 
     <div class="phone-viewport">
       <md-list>
-        <md-list-item>
+        <md-list-item @click="navTo('home')">
           <md-icon>home</md-icon> <span>Home</span>
         </md-list-item>
 
-        <md-list-item>
+        <md-list-item @click="navTo('play')">
           <md-icon>videogame_asset</md-icon> <span>Play</span>
         </md-list-item>
 
-        <md-list-item>
+        <md-list-item @click="navTo('article')">
           <md-icon>library_books</md-icon> <span>Aticle</span>
         </md-list-item>
 
-        <md-list-item>
+        <md-list-item @click="navTo('about')">
           <md-icon>face</md-icon> <span>About</span>
           <md-divider class="md-inset"></md-divider>
         </md-list-item>
@@ -68,6 +68,10 @@ export default {
     },
     switchTheme() {
       Theme.switchNext()
+    },
+    navTo(url) {
+      this.$router.push(url)
+      this.toggleLeftSidenav()
     }
   }
 }
