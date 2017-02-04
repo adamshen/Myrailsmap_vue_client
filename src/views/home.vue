@@ -21,19 +21,13 @@
 </template>
 
 <script>
-import FlexSelect from '../components/home/FlexSelect'
-import FlexBox from '../components/home/FlexBox'
-
 export default {
   data() {
     return {
       bannerShrink: true
     }
   },
-  components: {
-    FlexSelect,
-    FlexBox
-  },
+  components: {},
   methods: {
     shrinkStyle() {
       let flexFlow = this.bannerShrink ? 'column' : 'row'
