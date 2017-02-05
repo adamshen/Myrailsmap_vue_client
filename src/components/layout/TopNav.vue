@@ -1,5 +1,5 @@
 <template>
-<div class="phone-viewport">
+<div>
   <md-toolbar>
     <md-button class="md-icon-button" @click="toggleLeftSidenav">
       <md-icon>menu</md-icon>
@@ -21,7 +21,7 @@
       </div>
     </md-toolbar>
 
-    <div class="phone-viewport">
+    <div>
       <md-list>
         <md-list-item @click="navTo('home')">
           <md-icon>home</md-icon> <span>Home</span>
