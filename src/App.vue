@@ -25,6 +25,7 @@ export default {
 
 <style>
 body {
+  min-width: 1100px;
   margin: 0;
   background: #f4f4f4 !important;
 }
