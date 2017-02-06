@@ -88,6 +88,20 @@
       </div>
     </div>
   </div>
+  <div class="check-report">
+    <div class="cr-header">
+      <div class="cr-icon">
+        <md-icon>assessment</md-icon>
+      </div>
+      <h3>打卡统计</h3>
+    </div>
+    <div class="cr-container">
+      <div class="cr-content">
+      </div>
+      <div class="cr-img">
+      </div>
+    </div>
+  </div>
 </div>
 </template>
 
@@ -122,7 +136,8 @@ export default {
 </script>
 
 <style>
-.dc-container {
+.dc-container,
+.cr-container {
   display: flex;
   display: -webkit-flex;
   justify-content: center;
@@ -134,16 +149,32 @@ export default {
   min-width: 300px;
 }
 
-.dc-icon {
+.dc-icon,
+.cr-icon {
   margin-right: 8px;
 }
 
-.dc-header {
+.dc-header,
+.cr-header {
   display: flex;
   display: -webkit-flex;
   justify-content: center;
   align-items: center;
   flex-flow: row;
+}
+
+.dairly-check {
+  padding: 2rem 0;
+}
+
+.check-report {
+  background: #b1e5ff;
+}
+
+.cr-content {
+}
+
+.cr-img {
 }
 
 .home-banner {
