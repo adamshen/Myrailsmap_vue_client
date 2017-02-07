@@ -101,6 +101,14 @@
       <img src="../assets/run.png">
     </div>
   </div>
+  <div class="profile">
+    <div class="profile-img">
+      <img src="../assets/ruby.jpg">
+    </div>
+    <div class="profile-content">
+      Profile
+    </div>
+  </div>
 </div>
 </template>
 
@@ -136,11 +144,18 @@ export default {
 
 <style>
 .dc-container,
-.check-report {
+.check-report,
+.profile {
   display: flex;
   display: -webkit-flex;
   justify-content: center;
   width: 100%;
+}
+
+.dairly-check,
+.check-report,
+.profile {
+  padding: 1rem 0 2rem 0;
 }
 
 .dc-box {
@@ -162,17 +177,21 @@ export default {
   flex-flow: row;
 }
 
-.dairly-check {
-  padding: 2rem 0;
-}
-
 .check-report {
-  padding: 2rem;
   background: #b1e5ff;
 }
 
 .cr-content {
   width: 350px;
+}
+
+.profile-img {
+  padding: 1rem;
+  background: #fff;
+}
+
+.profile-content {
+  width: 400px;
 }
 
 .home-banner {
