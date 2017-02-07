@@ -24,7 +24,9 @@ export default {
 body {
   min-width: 1100px;
   margin: 0;
+  /* overwrite the default set in md */
   background: #f4f4f4 !important;
+  color: rgba(0, 0, 0, 0.66) !important;
 }
 
 #app {}
