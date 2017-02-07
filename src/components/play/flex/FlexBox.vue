@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Bus from '../../lib/bus.js'
+import Bus from '../../../lib/bus.js'
 
 export default {
   data() {

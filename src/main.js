@@ -9,6 +9,7 @@ import 'vue-material/dist/vue-material.css'
 import Theme from './lib/theme.js'
 
 import Home from './views/home.vue'
+import Play from './views/play.vue'
 
 // Route
 Vue.use(VueRouter)
@@ -19,6 +20,9 @@ const routers = [{
 }, {
   path: '/',
   redirect: 'home'
+}, {
+  path: '/play',
+  component: Play
 }]
 
 const router = new VueRouter({
