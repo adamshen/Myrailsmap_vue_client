@@ -109,10 +109,13 @@
       Profile
     </div>
   </div>
+  <bottom-footer></bottom-footer>
 </div>
 </template>
 
 <script>
+import BottomFooter from '../components/layout/BottomFooter'
+
 export default {
   data() {
     return {
@@ -122,7 +125,9 @@ export default {
       monthCheckItem: {}
     }
   },
-  components: {},
+  components: {
+    BottomFooter
+  },
   methods: {
     dynamicBannerStyle() {
       return {

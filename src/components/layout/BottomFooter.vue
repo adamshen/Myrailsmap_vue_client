@@ -1,12 +1,14 @@
 <template>
-<div class="footer">
-  <img class="ft-vue-logo" src="../../assets/logo.png">
-  <p class="site-info"> Simple vue blog by @adam 2017 </p>
-  <p class="backend-info"> Rails-api only model in backend</p>
-  <div class="ft-avatar">
-    <i class="fa fa-github" aria-hidden="true"></i>
-    <i class="fa fa-weixin" aria-hidden="true"></i>
-    <i class="fa fa-envelope" aria-hidden="true"></i>
+<div class="footer-wrapper">
+  <div class="footer">
+    <img class="ft-vue-logo" src="../../assets/logo.png">
+    <p class="site-info"> Simple vue blog by @adam 2017 </p>
+    <p class="backend-info"> Rails-api only model in backend</p>
+    <div class="ft-avatar">
+      <i class="fa fa-github" aria-hidden="true"></i>
+      <i class="fa fa-weixin" aria-hidden="true"></i>
+      <i class="fa fa-envelope" aria-hidden="true"></i>
+    </div>
   </div>
 </div>
 </template>
@@ -16,14 +18,18 @@ export default {}
 </script>
 
 <style>
+.footer-wrapper {
+  background: #fff;
+}
+
 .footer {
   display: flex;
   display: -webkit-flex;
   flex-flow: column;
   align-items: center;
-  margin: 4rem 2rem;
-  padding: 1rem 0;
-  border-top: 1px solid #7b868a;
+  margin: 0 2rem;
+  padding: 2rem 0;
+  border-top: 1px solid;
   color: rgba(0, 0, 0, 0.55);
 }
 
