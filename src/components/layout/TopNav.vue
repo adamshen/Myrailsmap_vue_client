@@ -33,10 +33,6 @@
 
         <md-list-item @click="navTo('article')">
           <md-icon>library_books</md-icon> <span>Aticle</span>
-        </md-list-item>
-
-        <md-list-item @click="navTo('about')">
-          <md-icon>face</md-icon> <span>About</span>
           <md-divider class="md-inset"></md-divider>
         </md-list-item>
 
