@@ -127,7 +127,7 @@
 </template>
 
 <script>
-import BottomFooter from '../components/layout/BottomFooter'
+import BottomFooter from '../components/home/BottomFooter'
 
 export default {
   data() {
