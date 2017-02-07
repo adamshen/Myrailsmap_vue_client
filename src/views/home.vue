@@ -89,17 +89,16 @@
     </div>
   </div>
   <div class="check-report">
-    <div class="cr-header">
-      <div class="cr-icon">
-        <md-icon>assessment</md-icon>
+    <div class="cr-content">
+      <div class="cr-header">
+        <div class="cr-icon">
+          <md-icon>assessment</md-icon>
+        </div>
+        <h3>打卡统计</h3>
       </div>
-      <h3>打卡统计</h3>
     </div>
-    <div class="cr-container">
-      <div class="cr-content">
-      </div>
-      <div class="cr-img">
-      </div>
+    <div class="cr-img">
+      <img src="../assets/run.png">
     </div>
   </div>
 </div>
@@ -137,7 +136,7 @@ export default {
 
 <style>
 .dc-container,
-.cr-container {
+.check-report {
   display: flex;
   display: -webkit-flex;
   justify-content: center;
@@ -168,13 +167,12 @@ export default {
 }
 
 .check-report {
+  padding: 2rem;
   background: #b1e5ff;
 }
 
 .cr-content {
-}
-
-.cr-img {
+  width: 350px;
 }
 
 .home-banner {
