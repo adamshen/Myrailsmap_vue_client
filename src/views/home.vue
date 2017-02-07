@@ -106,7 +106,20 @@
       <img src="../assets/ruby.jpg">
     </div>
     <div class="profile-content">
-      Profile
+      <h2>Hello, this is adam</h2>
+      <div class="chip-line">
+        <div class="chip">吃货</div>
+        <div class="chip">微胖</div>
+      </div>
+      <div class="chip-line">
+        <div class="chip">Rubyist</div>
+        <div class="chip">程序员</div>
+      </div>
+      <div class="chip-line">
+        <div class="chip">努力学习</div>
+        <div class="chip">争取节食</div>
+      </div>
+      <h2>I love <span class="ruby-red">ruby</span> and my wife</h2>
     </div>
   </div>
   <bottom-footer></bottom-footer>
@@ -196,7 +209,38 @@ export default {
 }
 
 .profile-content {
+  display: flex;
+  display: -webkit-flex;
+  flex-flow: column;
   width: 400px;
+  padding: 2rem;
+}
+
+.chip-line {
+  padding: 8px 0;
+}
+
+.chip-line:nth-child(3) {
+  text-align: center;
+}
+
+.chip-line:nth-child(4) {
+  text-align: right;
+}
+
+.chip {
+  background-color: #555555;
+  padding: 8px 16px;
+  border-radius: 15px;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  display: inline-block;
+  flex: none;
+}
+
+.ruby-red {
+  color: #b94f61
 }
 
 .home-banner {
