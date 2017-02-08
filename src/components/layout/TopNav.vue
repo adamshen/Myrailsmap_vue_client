@@ -23,15 +23,15 @@
 
     <div>
       <md-list>
-        <md-list-item @click="navTo('home')">
+        <md-list-item @click="navTo('/home')">
           <md-icon>home</md-icon> <span>Home</span>
         </md-list-item>
 
-        <md-list-item @click="navTo('play')">
+        <md-list-item @click="navTo('/play')">
           <md-icon>videogame_asset</md-icon> <span>Play</span>
         </md-list-item>
 
-        <md-list-item @click="navTo('article')">
+        <md-list-item @click="navTo('/article')">
           <md-icon>library_books</md-icon> <span>Aticle</span>
           <md-divider class="md-inset"></md-divider>
         </md-list-item>
@@ -66,7 +66,7 @@ export default {
       Theme.switchNext()
     },
     navTo(url) {
-      this.$router.push(url)
+      this.$router.push({path: url})
       this.toggleLeftSidenav()
     }
   }
