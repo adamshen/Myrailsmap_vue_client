@@ -17,9 +17,13 @@ export default {
 
 <style>
 .play-nav {
-  margin-top: 2rem;
+  margin: 2rem 0 ;
   display: flex;
   display: -webkit-flex;
   justify-content: center;
+}
+
+.play-main {
+  padding-bottom: 8rem;
 }
 </style>

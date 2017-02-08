@@ -1,5 +1,5 @@
 <template>
-<div class="flex-box-container" :style="boxContainerStyle">
+<div class="flex-container" :style="ContainerStyle">
   <div class="flex-box" :style="flexBoxStyle" v-for="n in boxNumber">
     <h2>Box {{ n }}</h2>
   </div>
@@ -15,12 +15,12 @@ export default {
       flexDirection: 'row',
       justifyContent: 'center',
       boxNumber: 3,
-      boxWidth: 300,
-      boxHeight: 400
+      boxWidth: 250,
+      boxHeight: 250
     }
   },
   computed: {
-    boxContainerStyle() {
+    ContainerStyle() {
       let containerStyle = {
         display: 'flex',
         'justify-content': this.justifyContent,
@@ -54,7 +54,13 @@ export default {
 </script>
 
 <style>
-.flex-box-container {}
+.flex-container {
+  max-width: 1020px;
+  height: 1020px;
+  margin: 0 auto;
+  padding: 10px;
+  border: 1px solid;
+}
 
 .flex-box {
   background: #fff;
@@ -62,5 +68,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 1px solid;
 }
 </style>

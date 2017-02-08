@@ -1,18 +1,18 @@
 <template>
 <div>
-  <flex-select></flex-select>
-  <flex-box></flex-box>
+  <flex-dialog></flex-dialog>
+  <flex-container></flex-container>
 </div>
 </template>
 
 <script>
-import FlexBox from './flex/FlexBox.vue'
-import FlexSelect from './flex/FlexSelect.vue'
+import FlexContainer from './flex/FlexContainer.vue'
+import FlexDialog from './flex/FlexDialog.vue'
 
 export default {
   components: {
-    FlexBox,
-    FlexSelect
+    FlexContainer,
+    FlexDialog
   }
 }
 </script>

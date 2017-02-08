@@ -1,6 +1,6 @@
 <template>
 <div class="flex-dialog">
-  <div class="flex-select-box">
+  <div class="flex-select-container">
     <div class="flex-select">
       <md-input-container>
         <label for="flex-direction">排列方式</label>
@@ -56,7 +56,7 @@ export default {
   flex-direction: column;
 }
 
-.flex-select-box {
+.flex-select-container {
   flex: 0 0 auto;
   display: flex;
   display: -webkit-flex;
