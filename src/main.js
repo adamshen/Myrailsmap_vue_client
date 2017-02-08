@@ -10,6 +10,7 @@ import Theme from './lib/theme.js'
 
 import Home from './views/home.vue'
 import Play from './views/play.vue'
+import Flex from './components/play/Flex.vue'
 
 // Route
 Vue.use(VueRouter)
@@ -22,7 +23,11 @@ const routers = [{
   redirect: 'home'
 }, {
   path: '/play',
-  component: Play
+  component: Play,
+  children: [{
+    path: 'flex',
+    component: Flex
+  }]
 }]
 
 const router = new VueRouter({
