@@ -1,6 +1,6 @@
 <template>
 <div>
-  TabNav
+
 </div>
 </template>
 
