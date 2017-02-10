@@ -24,5 +24,8 @@ module.exports = {
       "named": "ignore",
       "asyncArrow": "ignore"
     }]
+  },
+  'env': {
+    'browser': true
   }
 }

@@ -16,7 +16,7 @@
     "chart.js": "^2.5.0",
     "vue": "^2.1.0",
     "vue-material": "^0.5.2",
-    "vue-resource": "^1.0.3",
+    "vue-resource": "^1.2.0",
     "vue-router": "^2.1.1"
   },
   "devDependencies": {

@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import VueRouter from 'vue-router'
 import VueMaterial from 'vue-material'
+import VueResource from 'vue-resource'
 import 'vue-material/dist/vue-material.css'
 
 import Theme from './lib/theme.js'
@@ -33,6 +34,9 @@ const routers = [{
 const router = new VueRouter({
   routes: routers
 })
+
+// Resources
+Vue.use(VueResource)
 
 // UI
 Vue.use(VueMaterial)
