@@ -11,7 +11,7 @@ import Theme from './lib/theme.js'
 
 import Home from './views/home.vue'
 import Play from './views/play.vue'
-import Flex from './components/play/Flex.vue'
+import Flex from './views/play/flex.vue'
 
 // Route
 Vue.use(VueRouter)
