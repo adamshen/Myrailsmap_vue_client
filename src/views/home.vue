@@ -133,6 +133,7 @@
 import BottomFooter from '../components/home/BottomFooter'
 import Chart from 'chart.js'
 import Api from '../lib/api'
+import CheckChart from '../lib/checkChart'
 
 export default {
   data() {
@@ -169,50 +170,14 @@ export default {
     }
   },
   mounted() {
-    /* eslint-disable */
-    // Todo: fetch data & replace chart data
-    var ctx = document.getElementById("cr-chart");
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: ["日常减重", "日常学习"],
-          datasets: [{
-            label: '完成天数',
-            data: [4, 5],
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(255, 99, 132, 0.2)',
-            ],
-            borderColor: [
-              'rgba(255,99,132,1)',
-              'rgba(255,99,132,1)',
-            ],
-            borderWidth: 1
-          }, {
-            label: '总打卡数',
-            data: [6, 6],
-            backgroundColor: [
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-            ],
-            borderColor: [
-              'rgba(54, 162, 235, 1)',
-              'rgba(54, 162, 235, 1)'
-            ],
-            borderWidth: 1
-          }]
-        },
-        options: {
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: true
-              }
-            }]
-          }
-        }
-      })
-      /* eslint-enable */
+    var ctx = document.getElementById('cr-chart')
+
+    /* eslint-disable no-new */
+    new Chart(ctx, CheckChart.setting({
+      // Todo: fetch from server
+      all: [6, 6],
+      achieve: [4, 5]
+    }))
   }
 }
 </script>
