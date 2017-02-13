@@ -27,13 +27,18 @@
           <md-icon>home</md-icon> <span>Home</span>
         </md-list-item>
 
-        <md-list-item @click="navTo('/play')">
-          <md-icon>videogame_asset</md-icon> <span>Play</span>
+        <md-list-item>
+          <md-icon>videogame_asset</md-icon>
+          <span>Play</span>
+          <md-list-expand>
+            <md-list>
+              <md-list-item class="md-inset" @click="navTo('/play/flex')">Flex</md-list-item>
+            </md-list>
+          </md-list-expand>
         </md-list-item>
 
         <md-list-item @click="navTo('/article')">
           <md-icon>library_books</md-icon> <span>Aticle</span>
-          <md-divider class="md-inset"></md-divider>
         </md-list-item>
       </md-list>
     </div>
