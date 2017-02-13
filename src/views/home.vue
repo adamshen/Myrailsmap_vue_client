@@ -123,6 +123,8 @@
       <h2>I love <span class="ruby-red">ruby</span> and my wife</h2>
     </div>
   </div>
+  <md-dialog-alert :md-title="'提示'" :md-content="errorMessage" ref="authAlertDialog">
+  </md-dialog-alert>
   <bottom-footer></bottom-footer>
 </div>
 </template>
@@ -130,6 +132,7 @@
 <script>
 import BottomFooter from '../components/home/BottomFooter'
 import Chart from 'chart.js'
+import Api from '../lib/api'
 
 export default {
   data() {
@@ -137,7 +140,8 @@ export default {
       bannerNarrow: false,
       dailyLearn: {},
       dailyShed: {},
-      monthCheckItem: {}
+      monthCheckItem: {},
+      errorMessage: '发生错误!'
     }
   },
   components: {
@@ -155,8 +159,13 @@ export default {
     bannerNarrowIcon() {
       return this.bannerNarrow ? 'keyboard_arrow_down' : 'keyboard_arrow_up'
     },
-    submitCheck() {
-      // Todo: bind object to checkbox & submit check
+    submitCheck(checkData) {
+      try {
+        Api.post('daily_check', checkData)
+      } catch (err) {
+        this.errorMessage = err.message
+        this.$refs.authAlertDialog.open()
+      }
     }
   },
   mounted() {
