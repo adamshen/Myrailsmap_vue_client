@@ -12,6 +12,7 @@ import Theme from './lib/theme.js'
 import Home from './views/home.vue'
 import Play from './views/play.vue'
 import Flex from './views/play/flex.vue'
+import Article from './views/article.vue'
 
 // Route
 Vue.use(VueRouter)
@@ -29,6 +30,9 @@ const routers = [{
     path: 'flex',
     component: Flex
   }]
+}, {
+  path: '/article',
+  component: Article
 }]
 
 const router = new VueRouter({
