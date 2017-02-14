@@ -13,6 +13,7 @@ import Home from './views/home.vue'
 import Play from './views/play.vue'
 import Flex from './views/play/flex.vue'
 import Article from './views/article.vue'
+import Login from './views/login.vue'
 
 // Route
 Vue.use(VueRouter)
@@ -33,6 +34,9 @@ const routers = [{
 }, {
   path: '/article',
   component: Article
+}, {
+  path: '/login',
+  component: Login
 }]
 
 const router = new VueRouter({
