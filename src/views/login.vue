@@ -80,16 +80,15 @@ export default {
       this.submitting = true
 
       /* post to server */
-      let scope = this
-      Api.login(this.email, this.password, function(result) {
+      Api.login(this.email, this.password, (result) => {
         if (result.success) {
-          scope.$router.push({
+          this.$router.push({
             path: '/home'
           })
         } else {
-          scope.dialogErrorMessage = result.error.message
-          scope.$nextTick(function() {
-            scope.$refs.loginAlertDialog.open()
+          this.dialogErrorMessage = result.error.message
+          this.$nextTick(function() {
+            this.$refs.loginAlertDialog.open()
           })
         }
       })
