@@ -41,6 +41,9 @@ const router = new VueRouter({
 
 // Resources
 Vue.use(VueResource)
+if (process.env.NODE_ENV === 'development') {
+  Vue.http.options.root = 'http://127.0.0.1:3000/api'
+}
 
 // UI
 Vue.use(VueMaterial)
