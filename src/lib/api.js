@@ -18,15 +18,14 @@ function postWithToken(url, params) {
   Vue.http.post(url, params).then(response => {
     result = response
   }, response => {
-      // Todo: throw auth error if token is invalid
+    // Todo: throw auth error if token is invalid
   })
 
   return result
 }
 
 export default {
-  login(email, password) {
-    // Todo: return result
+  login(email, password, callback) {
     Vue.http.post('auth/sign_in', {
       email: email,
       password: password
@@ -39,8 +38,21 @@ export default {
 
       localStorage.setItem('bearerInfo', JSON.stringify(bearerInfo))
       Object.assign(Vue.http.headers.common, bearerInfo)
+      callback({
+        success: true
+      })
     }, response => {
-      // Todo: return reason
+      let result = {
+        success: false,
+        error: {
+          message: '登录失败!'
+        }
+      }
+
+      if (response.status === 401) {
+        result.error.message = '登录失败，请检查email或者密码是否正确!'
+      }
+      callback(result)
     })
   },
   post(url, params) {
@@ -50,7 +62,7 @@ export default {
       Object.assign(Vue.http.headers.common, localBearerInfo())
       return postWithToken(url, params)
     } else {
-      throw new Error('auth error')
+      throw new Error('尚未登录')
     }
   }
 }
