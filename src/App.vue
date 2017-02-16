@@ -2,12 +2,14 @@
 <div id="app">
   <top-nav></top-nav>
   <router-view></router-view>
+  <alert-dialog></alert-dialog>
 </div>
 </div>
 </template>
 
 <script>
 import TopNav from './components/layout/TopNav'
+import AlertDialog from './components/shared/AlertDialog'
 
 export default {
   name: 'app',
@@ -15,7 +17,8 @@ export default {
     return {}
   },
   components: {
-    TopNav
+    TopNav,
+    AlertDialog
   }
 }
 </script>

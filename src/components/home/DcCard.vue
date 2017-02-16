@@ -16,6 +16,7 @@
 
 <script>
 import Api from '../../lib/api'
+import Bus from '../../lib/bus'
 
 export default {
   props: ['checkCard'],
@@ -37,8 +38,10 @@ export default {
           check_result: this.itemChecked
         })
       } catch (err) {
-        this.errorMessage = err.message
-        this.$refs.authAlertDialog.open()
+        Bus.$emit('alertDialog', {
+          title: '提示',
+          content: err.message
+        })
       }
     }
   }
