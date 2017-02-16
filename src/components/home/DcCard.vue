@@ -33,7 +33,7 @@ export default {
   methods: {
     submitCheck() {
       try {
-        Api.post('check_record', {
+        Api.post('check_records', {
           check_card_id: this.checkCard.id,
           check_result: this.itemChecked
         })
