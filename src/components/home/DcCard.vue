@@ -1,0 +1,53 @@
+<template>
+<div class="dc-card">
+  <md-list>
+    <md-subheader v-text="checkCard.title"></md-subheader>
+    <md-list-item v-for="item of checkCard.check_items">
+      <md-checkbox class="md-primary" v-model="itemChecked[item.name]">{{item.label}}</md-checkbox>
+    </md-list-item>
+
+    <md-button class="md-primary" @click="submitCheck()">
+      打卡提交
+      <md-icon>check</md-icon>
+    </md-button>
+  </md-list>
+</div>
+</template>
+
+<script>
+import Api from '../../lib/api'
+
+export default {
+  props: ['checkCard'],
+  data() {
+    let itemNames = this.checkCard.check_items.map((item) => item.name)
+    let itemChecdedObject = {}
+    for (let itemName of itemNames) {
+      itemChecdedObject[itemName] = false
+    }
+    return {
+      itemChecked: itemChecdedObject
+    }
+  },
+  methods: {
+    submitCheck() {
+      try {
+        Api.post('check_record', {
+          check_card_id: this.checkCard.id,
+          check_result: this.itemChecked
+        })
+      } catch (err) {
+        this.errorMessage = err.message
+        this.$refs.authAlertDialog.open()
+      }
+    }
+  }
+}
+</script>
+
+<style>
+.dc-card {
+  margin-left: 32px;
+  min-width: 300px;
+}
+</style>

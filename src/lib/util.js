@@ -4,3 +4,16 @@ export function validateEmail(email) {
   return re.test(email)
   /* eslint-enable */
 }
+
+export function hasFalseAttr(object) {
+  let result = false
+
+  for (let attr in object) {
+    if (attr === false) {
+      result = true
+      return
+    }
+  }
+
+  return result
+}

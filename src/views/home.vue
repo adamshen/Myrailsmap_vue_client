@@ -23,69 +23,9 @@
       <h3>打卡项目</h3>
     </div>
     <div class="dc-container">
-      <div class="dc-box">
-        <md-list>
-          <md-subheader>日常减重</md-subheader>
-          <md-list-item>
-            <md-checkbox class="md-primary">不吃零食</md-checkbox>
-          </md-list-item>
-
-          <md-list-item>
-            <md-checkbox class="md-primary">吃七分饱</md-checkbox>
-          </md-list-item>
-
-          <md-list-item>
-            <md-checkbox class="md-primary">至少40分钟锻炼</md-checkbox>
-          </md-list-item>
-
-          <md-button class="md-primary" @click="submitCheck(dailyShed)">
-            打卡提交
-            <md-icon>check</md-icon>
-          </md-button>
-        </md-list>
-      </div>
-      <div class="dc-box">
-        <md-list>
-          <md-subheader>日常学习</md-subheader>
-          <md-list-item>
-            <md-checkbox class="md-primary">3个Tips</md-checkbox>
-          </md-list-item>
-
-          <md-list-item>
-            <md-checkbox class="md-primary">5个英文单词</md-checkbox>
-          </md-list-item>
-
-          <md-list-item>
-            <md-checkbox class="md-primary">1篇深度博文</md-checkbox>
-          </md-list-item>
-
-          <md-button class="md-primary" @click="submitCheck(dailyLearn)">
-            打卡提交
-            <md-icon>check</md-icon>
-          </md-button>
-        </md-list>
-      </div>
-      <div class="dc-box">
-        <md-list>
-          <md-subheader>月打卡项</md-subheader>
-          <md-list-item>
-            <md-checkbox class="md-primary">阅读2本书</md-checkbox>
-          </md-list-item>
-
-          <md-list-item>
-            <md-checkbox class="md-primary">进行4次长时间运动</md-checkbox>
-          </md-list-item>
-
-          <md-list-item>
-            <md-checkbox class="md-primary">阅读一个开源项目源码</md-checkbox>
-          </md-list-item>
-
-          <md-button class="md-primary" @click="submitCheck(monthCheckItem)">
-            打卡提交
-            <md-icon>check</md-icon>
-          </md-button>
-        </md-list>
-      </div>
+      <template v-for="checkCard of checkCards">
+        <dc-card :check-card="checkCard"></dc-card>
+      </template>
     </div>
   </div>
   <div class="check-report">
@@ -131,6 +71,7 @@
 
 <script>
 import BottomFooter from '../components/home/BottomFooter'
+import DcCard from '../components/home/DcCard'
 import Chart from 'chart.js'
 import Api from '../lib/api'
 import CheckChart from '../lib/checkChart'
@@ -139,14 +80,13 @@ export default {
   data() {
     return {
       bannerNarrow: false,
-      dailyLearn: {},
-      dailyShed: {},
-      monthCheckItem: {},
+      checkCards: [],
       errorMessage: '发生错误!'
     }
   },
   components: {
-    BottomFooter
+    BottomFooter,
+    DcCard
   },
   methods: {
     dynamicBannerStyle() {
@@ -159,20 +99,18 @@ export default {
     },
     bannerNarrowIcon() {
       return this.bannerNarrow ? 'keyboard_arrow_down' : 'keyboard_arrow_up'
-    },
-    submitCheck(checkData) {
-      try {
-        Api.post('daily_check', checkData)
-      } catch (err) {
-        this.errorMessage = err.message
-        this.$refs.authAlertDialog.open()
-      }
     }
   },
   mounted() {
-    var ctx = document.getElementById('cr-chart')
+    Api.get('check_cards/search', {
+      email: 'adam_ruby@126.com'
+    }, (response) => {
+      this.checkCards = response.body
+    })
 
-    /* eslint-disable no-new */
+    // draw check bar chart
+    var ctx = document.getElementById('cr-chart')
+      /* eslint-disable no-new */
     new Chart(ctx, CheckChart.setting({
       // Todo: fetch from server
       all: [6, 6],
@@ -196,11 +134,6 @@ export default {
 .check-report,
 .profile {
   padding: 1rem 0 2rem 0;
-}
-
-.dc-box {
-  margin-left: 32px;
-  min-width: 300px;
 }
 
 .dc-icon,

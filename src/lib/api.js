@@ -64,5 +64,14 @@ export default {
     } else {
       throw new Error('尚未登录')
     }
+  },
+  get(url, params, successCallback) {
+    Vue.http.get(url, {
+      params: params
+    }).then(response => {
+      successCallback(response)
+    }, response => {
+      return null
+    })
   }
 }
