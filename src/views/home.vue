@@ -63,8 +63,6 @@
       <h2>I love <span class="ruby-red">ruby</span> and my wife</h2>
     </div>
   </div>
-  <md-dialog-alert :md-title="'提示'" :md-content="errorMessage" ref="authAlertDialog">
-  </md-dialog-alert>
   <bottom-footer></bottom-footer>
 </div>
 </template>
@@ -80,8 +78,7 @@ export default {
   data() {
     return {
       bannerNarrow: false,
-      checkCards: [],
-      errorMessage: '发生错误!'
+      checkCards: []
     }
   },
   components: {
