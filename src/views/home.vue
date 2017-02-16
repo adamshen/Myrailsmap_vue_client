@@ -105,14 +105,19 @@ export default {
       this.checkCards = response.body
     })
 
-    // draw check bar chart
-    var ctx = document.getElementById('cr-chart')
+    Api.get('check_records/count', {
+      email: 'adam_ruby@126.com'
+    }, (response) => {
+      let countResults = response.body
+
+      // draw check bar chart
       /* eslint-disable no-new */
-    new Chart(ctx, CheckChart.setting({
-      // Todo: fetch from server
-      all: [6, 6],
-      achieve: [4, 5]
-    }))
+      new Chart(document.getElementById('cr-chart'), CheckChart.setting({
+        labels: countResults.map(result => result.card),
+        all: countResults.map(result => result.all),
+        finish: countResults.map(result => result.finish)
+      }))
+    })
   }
 }
 </script>

@@ -3,10 +3,10 @@ export default {
     return {
       type: 'bar',
       data: {
-        labels: ['日常减重', '日常学习'],
+        labels: data.labels,
         datasets: [{
           label: '完成天数',
-          data: data.achieve,
+          data: data.finish,
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(255, 99, 132, 0.2)'
