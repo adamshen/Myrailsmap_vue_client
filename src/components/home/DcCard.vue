@@ -35,7 +35,8 @@ export default {
       try {
         Api.post('check_records', {
           check_card_id: this.checkCard.id,
-          check_result: this.itemChecked
+          check_result: this.itemChecked,
+          check_time: new Date().toJSON()
         })
       } catch (err) {
         Bus.$emit('alertDialog', {
