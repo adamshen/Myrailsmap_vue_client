@@ -3,10 +3,11 @@
   <md-list>
     <md-subheader v-text="checkCard.title"></md-subheader>
     <md-list-item v-for="item of checkCard.check_items">
-      <md-checkbox class="md-primary" v-model="itemChecked[item.name]">{{item.label}}</md-checkbox>
+      <md-checkbox class="md-primary" v-bind="itemAttr(item)" v-model="itemChecked[item.name]">{{item.label}}</md-checkbox>
     </md-list-item>
 
-    <md-button class="md-primary" @click="submitCheck()">
+    <md-button class="md-primary" v-if="checkCard.record_in_period" disabled>已提交今日打卡</md-button>
+    <md-button v-else class="md-primary" @click="submitCheck()">
       打卡提交
       <md-icon>check</md-icon>
     </md-button>
@@ -44,6 +45,21 @@ export default {
           content: err.message
         })
       }
+    },
+    itemAttr(item) {
+      let result = {}
+      let record = this.checkCard.record_in_period
+
+      if (record) {
+        result.disabled = 'disabled'
+
+        if (record.content[item.name]) {
+          result.style = {
+            'text-decoration': 'line-through'
+          }
+        }
+        return result
+      }
     }
   }
 }
@@ -55,3 +71,4 @@ export default {
   min-width: 300px;
 }
 </style>
+        }
