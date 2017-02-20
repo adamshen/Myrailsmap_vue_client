@@ -25,8 +25,6 @@
       </div>
     </form>
   </div>
-  <md-dialog-alert :md-title="'提示'" :md-content="dialogErrorMessage" ref="loginAlertDialog" @close="reInitData">
-  </md-dialog-alert>
 </div>
 </template>
 
@@ -46,7 +44,6 @@ export default {
         email: '',
         password: '',
         submitting: false,
-        dialogErrorMessage: '发生错误!',
         validationError: {
           exist: false,
           email: '',
@@ -86,10 +83,7 @@ export default {
             path: '/home'
           })
         } else {
-          this.dialogErrorMessage = result.error.message
-          this.$nextTick(function() {
-            this.$refs.loginAlertDialog.open()
-          })
+          this.reInitData()
         }
       })
     }

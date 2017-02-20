@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Bus from './bus'
 
 function bearerTokenIn(object) {
   if (object == null) {
@@ -12,16 +13,31 @@ function localBearerInfo() {
   return JSON.parse(bearerInfo)
 }
 
-function postWithToken(url, params) {
-  let result = null
+function alertError(responseBody) {
+  let errorMessage = {
+    title: '错误',
+    content: '发生了错误'
+  }
 
+  if (responseBody.error) {
+    errorMessage.title = responseBody.error
+
+    if (responseBody.error.message) {
+      errorMessage.content = responseBody.message
+    }
+  } else if (responseBody.errors) {
+    errorMessage.content = responseBody.errors.join('')
+  }
+
+  Bus.$emit('alertDialog', errorMessage)
+}
+
+function postWithToken(url, params, successCallback) {
   Vue.http.post(url, params).then(response => {
-    result = response
+    successCallback(response)
   }, response => {
-    // Todo: throw auth error if token is invalid
+    alertError(response.body)
   })
-
-  return result
 }
 
 export default {
@@ -42,27 +58,23 @@ export default {
         success: true
       })
     }, response => {
-      let result = {
-        success: false,
-        error: {
-          message: '登录失败!'
-        }
-      }
-
-      if (response.status === 401) {
-        result.error.message = '登录失败，请检查email或者密码是否正确!'
-      }
-      callback(result)
+      alertError(response.body)
+      callback({
+        success: false
+      })
     })
   },
-  post(url, params) {
+  post(url, params, successCallback) {
     if (bearerTokenIn(Vue.http.headers.common)) {
-      return postWithToken(url, params)
+      return postWithToken(url, params, successCallback)
     } else if (bearerTokenIn(localBearerInfo())) {
       Object.assign(Vue.http.headers.common, localBearerInfo())
-      return postWithToken(url, params)
+      return postWithToken(url, params, successCallback)
     } else {
-      throw new Error('尚未登录')
+      alertError({
+        error: '尚未登录',
+        message: '未在本地检测到已存储的Token'
+      })
     }
   },
   get(url, params, successCallback) {
@@ -71,7 +83,7 @@ export default {
     }).then(response => {
       successCallback(response)
     }, response => {
-      return null
+      alertError(response.body)
     })
   }
 }

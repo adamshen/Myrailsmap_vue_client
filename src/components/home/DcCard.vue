@@ -17,7 +17,6 @@
 
 <script>
 import Api from '../../lib/api'
-import Bus from '../../lib/bus'
 
 export default {
   props: ['checkCard'],
@@ -33,18 +32,13 @@ export default {
   },
   methods: {
     submitCheck() {
-      try {
-        Api.post('check_records', {
-          check_card_id: this.checkCard.id,
-          check_result: this.itemChecked,
-          check_time: new Date().toJSON()
-        })
-      } catch (err) {
-        Bus.$emit('alertDialog', {
-          title: '提示',
-          content: err.message
-        })
-      }
+      Api.post('check_records', {
+        check_card_id: this.checkCard.id,
+        check_result: this.itemChecked,
+        check_time: new Date().toJSON()
+      }, (response) => {
+        // Todo: update the check_card data
+      })
     },
     itemAttr(item) {
       let result = {}
@@ -71,4 +65,3 @@ export default {
   min-width: 300px;
 }
 </style>
-        }
