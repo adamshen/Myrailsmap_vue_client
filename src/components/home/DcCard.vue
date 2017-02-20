@@ -17,6 +17,7 @@
 
 <script>
 import Api from '../../lib/api'
+import Bus from '../../lib/bus'
 
 export default {
   props: ['checkCard'],
@@ -37,7 +38,7 @@ export default {
         check_result: this.itemChecked,
         check_time: new Date().toJSON()
       }, (response) => {
-        // Todo: update the check_card data
+        Bus.$emit('updateCheckCards', response.body)
       })
     },
     itemAttr(item) {
@@ -48,8 +49,13 @@ export default {
         result.disabled = 'disabled'
 
         if (record.content[item.name]) {
+          this.itemChecked[item.name] = true
           result.style = {
             'text-decoration': 'line-through'
+          }
+        } else {
+          result.style = {
+            'color': 'red'
           }
         }
         return result

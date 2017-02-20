@@ -72,6 +72,7 @@ import BottomFooter from '../components/home/BottomFooter'
 import DcCard from '../components/home/DcCard'
 import Chart from 'chart.js'
 import Api from '../lib/api'
+import Bus from '../lib/bus'
 import CheckChart from '../lib/checkChart'
 
 export default {
@@ -117,6 +118,14 @@ export default {
         all: countResults.map(result => result.all),
         finish: countResults.map(result => result.finish)
       }))
+    })
+
+    Bus.$on('updateCheckCards', checkCard => {
+      let index = this.checkCards.findIndex((element) => element.id === checkCard.id)
+
+      if (index >= 0) {
+        this.checkCards.splice(index, 1, checkCard)
+      }
     })
   }
 }
