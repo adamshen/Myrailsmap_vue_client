@@ -48,7 +48,7 @@ Vue.use(VueResource)
 if (process.env.NODE_ENV === 'development') {
   Vue.http.options.root = 'http://127.0.0.1:3000/api'
 } else {
-  Vue.http.options.root = 'http://myrailsmap.herokuapp.com/api'
+  Vue.http.options.root = 'https://myrailsmap.herokuapp.com/api'
 }
 
 // UI
