@@ -22,7 +22,7 @@ function alertError(responseBody) {
   if (responseBody.error) {
     errorMessage.title = responseBody.error
 
-    if (responseBody.error.message) {
+    if (responseBody.message) {
       errorMessage.content = responseBody.message
     }
   } else if (responseBody.errors) {
