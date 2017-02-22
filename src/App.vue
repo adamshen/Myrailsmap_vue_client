@@ -32,5 +32,12 @@ body {
   color: rgba(0, 0, 0, 0.66) !important;
 }
 
+.spinner {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #app {}
 </style>

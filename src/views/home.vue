@@ -22,6 +22,9 @@
       </div>
       <h3>打卡项目</h3>
     </div>
+    <div class="spinner">
+      <md-spinner v-if="checkCards.length === 0" md-indeterminate></md-spinner>
+    </div>
     <div class="dc-container">
       <template v-for="checkCard of checkCards">
         <dc-card :check-card="checkCard"></dc-card>
