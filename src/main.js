@@ -14,6 +14,7 @@ import Play from './views/play.vue'
 import Flex from './views/play/flex.vue'
 import Article from './views/article.vue'
 import Login from './views/login.vue'
+import Editor from './views/article/editor.vue'
 
 // Route
 Vue.use(VueRouter)
@@ -34,6 +35,9 @@ const routers = [{
 }, {
   path: '/article',
   component: Article
+}, {
+  path: '/article/new',
+  component: Editor
 }, {
   path: '/login',
   component: Login
