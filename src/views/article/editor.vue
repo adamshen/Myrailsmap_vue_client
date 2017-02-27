@@ -8,7 +8,7 @@
     </md-button-toggle>
 
     <span style="flex: 1"></span>
-    <md-button class="md-raised md-primary">提交</md-button>
+    <md-button class="md-raised md-primary" @click="submitArticle">提交</md-button>
   </div>
   <div class="editor-title-input">
     <div class="topic-selector">
@@ -33,7 +33,8 @@
 </template>
 
 <script>
-import marked from 'marked'
+import Markdown from '../../lib/markdown'
+import Api from '../../lib/api'
 
 export default {
   data() {
@@ -49,11 +50,17 @@ export default {
       this.currentAction = action
 
       if (action === 'preview') {
-        document.getElementById('editor-preview').innerHTML = marked(this.articleContent)
-
-        let blocks = this.$el.querySelectorAll('pre code')
-        Array.prototype.forEach.call(blocks, window.hljs.highlightBlock)
+        Markdown.parseMarkdownToDiv('editor-preview', this.articleContent)
       }
+    },
+    submitArticle() {
+      Api.post('articles', {
+        title: this.articleTitle,
+        content: this.articleContent,
+        topic: this.articleTopic
+      }, (response) => {
+        // Todo: jump to new article
+      })
     }
   }
 }
