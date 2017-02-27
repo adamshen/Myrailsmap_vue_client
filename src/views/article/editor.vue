@@ -8,17 +8,18 @@
     </md-button-toggle>
 
     <span style="flex: 1"></span>
-    <md-button class="md-raised md-primary" @click="submitArticle">提交</md-button>
+    <md-button class="md-raised md-primary" disabled v-if="isSubmitting">提交中...</md-button>
+    <md-button class="md-raised md-primary" @click="submitArticle" v-else>提交</md-button>
   </div>
   <div class="editor-title-input">
     <div class="topic-selector">
       <md-input-container>
         <label for="article-topic">选择分类</label>
         <md-select name="article-topic" id="article-topic" v-model="articleTopic">
-          <md-option value="font-end">前端</md-option>
-          <md-option value="back-end">后端</md-option>
-          <md-option value="coding">编程</md-option>
-          <md-option value="tools">工具控</md-option>
+          <md-option value="前端">前端</md-option>
+          <md-option value="后端">后端</md-option>
+          <md-option value="编程">编程</md-option>
+          <md-option value="工具控">工具控</md-option>
         </md-select>
       </md-input-container>
     </div>
@@ -42,7 +43,8 @@ export default {
       currentAction: 'editor',
       articleTitle: '',
       articleContent: '',
-      articleTopic: ''
+      articleTopic: '',
+      isSubmitting: false
     }
   },
   methods: {
@@ -54,12 +56,19 @@ export default {
       }
     },
     submitArticle() {
+      this.isSubmitting = true
+      setTimeout(() => {
+        this.isSubmitting = false
+      }, 2000)
+
       Api.post('articles', {
         title: this.articleTitle,
         content: this.articleContent,
         topic: this.articleTopic
       }, (response) => {
-        // Todo: jump to new article
+        this.$router.push({
+          path: '/article/' + response.body.id
+        })
       })
     }
   }
