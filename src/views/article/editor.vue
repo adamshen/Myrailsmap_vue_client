@@ -1,6 +1,6 @@
 <template>
 <div class="editor-main">
-  <h2>新建markdown文章</h2>
+  <h2 v-text="isNewArticle ? '编辑Markdown文章' : '新建Markdown文章'"></h2>
   <div class="editor-buttons">
     <md-button-toggle md-single>
       <md-button class="md-toggle" @click="switchTo('editor')">编辑</md-button>
@@ -15,7 +15,7 @@
     <div class="topic-selector">
       <md-input-container>
         <label for="article-topic">选择分类</label>
-        <md-select name="article-topic" id="article-topic" v-model="articleTopic">
+        <md-select name="article-topic" id="article-topic" v-model="article.topic">
           <md-option value="前端">前端</md-option>
           <md-option value="后端">后端</md-option>
           <md-option value="编程">编程</md-option>
@@ -25,10 +25,10 @@
     </div>
     <md-input-container md-inline>
       <label>标题</label>
-      <md-input v-model="articleTitle"></md-input>
+      <md-input v-model="article.title"></md-input>
     </md-input-container>
   </div>
-  <textarea class="editor-input" v-model="articleContent" v-if="currentAction === 'editor'"></textarea>
+  <textarea class="editor-input" v-model="article.content" v-if="currentAction === 'editor'"></textarea>
   <div id="editor-preview" v-show="currentAction === 'preview'"></div>
 </div>
 </template>
@@ -41,9 +41,11 @@ export default {
   data() {
     return {
       currentAction: 'editor',
-      articleTitle: '',
-      articleContent: '',
-      articleTopic: '',
+      article: {
+        title: '',
+        content: '',
+        topic: ''
+      },
       isSubmitting: false
     }
   },
@@ -52,7 +54,7 @@ export default {
       this.currentAction = action
 
       if (action === 'preview') {
-        Markdown.parseMarkdownToDiv('editor-preview', this.articleContent)
+        Markdown.parseMarkdownToDiv('editor-preview', this.article.content)
       }
     },
     submitArticle() {
@@ -61,14 +63,23 @@ export default {
         this.isSubmitting = false
       }, 2000)
 
-      Api.post('articles', {
-        title: this.articleTitle,
-        content: this.articleContent,
-        topic: this.articleTopic
-      }, (response) => {
+      Api.post('articles', this.article, (response) => {
         this.$router.push({
           path: '/article/' + response.body.id
         })
+      })
+    },
+    isNewArticle() {
+      return this.$route.path === '/article/new'
+    }
+  },
+  created() {
+    let id = this.$route.query.id
+
+    if (!this.isNewArticle() && id) {
+      Api.get('articles/' + id, {}, (response) => {
+        this.article = response.body
+        this.article.topic = response.body.article_topic_id
       })
     }
   }

@@ -40,6 +40,9 @@ const routers = [{
   path: '/article/new',
   component: Editor
 }, {
+  path: '/article/edit',
+  component: Editor
+}, {
   path: '/article/:id',
   component: ShowArticle
 }, {
