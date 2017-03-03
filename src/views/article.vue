@@ -34,8 +34,6 @@
 import Api from '../lib/api'
 import Markdown from '../lib/markdown'
 
-import ArticleProfile from '../components/article/ArticleProfile'
-
 export default {
   data() {
     return {
@@ -43,9 +41,7 @@ export default {
       currentArticle: null
     }
   },
-  components: {
-    ArticleProfile
-  },
+  components: {},
   mounted() {
     Api.get('articles', {}, (response) => {
       this.articles = response.body || []
