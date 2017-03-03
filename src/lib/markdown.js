@@ -1,6 +1,6 @@
 import marked from 'marked'
 
-// bower based
+// browser based
 // ensure highlight.js is loaded
 export default {
   parseMarkdownToDiv: function (domId, markdownText) {
