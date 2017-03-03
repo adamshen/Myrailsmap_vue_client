@@ -15,11 +15,8 @@
     <div class="topic-selector">
       <md-input-container>
         <label for="article-topic">选择分类</label>
-        <md-select name="article-topic" id="article-topic" v-model="article.topic">
-          <md-option value="前端">前端</md-option>
-          <md-option value="后端">后端</md-option>
-          <md-option value="编程">编程</md-option>
-          <md-option value="工具控">工具控</md-option>
+        <md-select name="article-topic" id="article-topic" v-model="article.article_topic_id">
+          <md-option v-for="topic of topics" :value="topic.id">{{ topic.name }}</md-option>
         </md-select>
       </md-input-container>
     </div>
@@ -41,10 +38,11 @@ export default {
   data() {
     return {
       currentAction: 'editor',
+      topics: [],
       article: {
         title: '',
         content: '',
-        topic: ''
+        article_topic_id: ''
       },
       isSubmitting: false
     }
@@ -63,11 +61,19 @@ export default {
         this.isSubmitting = false
       }, 2000)
 
-      Api.post('articles', this.article, (response) => {
-        this.$router.push({
-          path: '/article/' + response.body.id
+      if (this.isNewArticle()) {
+        Api.post('articles', this.article, (response) => {
+          this.$router.push({
+            path: '/article/' + response.body.id
+          })
         })
-      })
+      } else {
+        Api.patch('articles/' + this.article.id, this.article, (response) => {
+          this.$router.push({
+            path: '/article/' + response.body.id
+          })
+        })
+      }
     },
     isNewArticle() {
       return this.$route.path === '/article/new'
@@ -79,9 +85,13 @@ export default {
     if (!this.isNewArticle() && id) {
       Api.get('articles/' + id, {}, (response) => {
         this.article = response.body
-        this.article.topic = response.body.article_topic_id
       })
     }
+  },
+  mounted() {
+    Api.get('article_topics', {}, (response) => {
+      this.topics = response.body
+    })
   }
 }
 </script>
