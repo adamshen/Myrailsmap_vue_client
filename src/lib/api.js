@@ -13,6 +13,22 @@ function localBearerInfo() {
   return JSON.parse(bearerInfo)
 }
 
+function tokenExist() {
+  if (bearerTokenIn(Vue.http.headers.common)) {
+    return true
+  } else if (bearerTokenIn(localBearerInfo())) {
+    Object.assign(Vue.http.headers.common, localBearerInfo())
+    return true
+  } else {
+    alertError({
+      error: '尚未登录',
+      message: '未在本地检测到已存储的Token'
+    })
+
+    return false
+  }
+}
+
 function alertError(responseBody) {
   let errorMessage = {
     title: '错误',
@@ -32,8 +48,28 @@ function alertError(responseBody) {
   Bus.$emit('alertDialog', errorMessage)
 }
 
-function postWithToken(url, params, successCallback) {
-  Vue.http.post(url, params).then(response => {
+function requestWithJsonBody(verb, url, jsonBody, successCallback) {
+  if (!tokenExist()) {
+    return
+  }
+
+  Vue.http[verb](url, jsonBody).then(response => {
+    successCallback(response)
+  }, response => {
+    alertError(response.body)
+  })
+}
+
+function request(verb, url, params, successCallback) {
+  if (verb !== 'get') {
+    if (!tokenExist()) {
+      return
+    }
+  }
+
+  Vue.http[verb](url, {
+    params: params
+  }).then(response => {
     successCallback(response)
   }, response => {
     alertError(response.body)
@@ -64,26 +100,13 @@ export default {
       })
     })
   },
-  post(url, params, successCallback) {
-    if (bearerTokenIn(Vue.http.headers.common)) {
-      return postWithToken(url, params, successCallback)
-    } else if (bearerTokenIn(localBearerInfo())) {
-      Object.assign(Vue.http.headers.common, localBearerInfo())
-      return postWithToken(url, params, successCallback)
-    } else {
-      alertError({
-        error: '尚未登录',
-        message: '未在本地检测到已存储的Token'
-      })
-    }
+  post(url, jsonBody, successCallback) {
+    requestWithJsonBody('post', url, jsonBody, successCallback)
+  },
+  patch(url, jsonBody, successCallback) {
+    requestWithJsonBody('patch', url, jsonBody, successCallback)
   },
   get(url, params, successCallback) {
-    Vue.http.get(url, {
-      params: params
-    }).then(response => {
-      successCallback(response)
-    }, response => {
-      alertError(response.body)
-    })
+    request('get', url, params, successCallback)
   }
 }
