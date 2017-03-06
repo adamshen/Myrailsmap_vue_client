@@ -108,5 +108,8 @@ export default {
   },
   get(url, params, successCallback) {
     request('get', url, params, successCallback)
+  },
+  delete(url, params, successCallback) {
+    request('delete', url, params, successCallback)
   }
 }

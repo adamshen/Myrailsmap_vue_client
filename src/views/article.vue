@@ -4,9 +4,14 @@
     <md-button class="md-fab md-mini" @click="$router.push({path: '/article/new'})">
       <md-icon>add</md-icon>
     </md-button>
-    <md-button class="md-fab md-mini" v-if="currentArticle" @click="$router.push({path: '/article/edit', query: { id: currentArticle.id }})">
-      <md-icon>create</md-icon>
-    </md-button>
+    <template v-if="currentArticle">
+      <md-button class="md-fab md-mini" @click="$router.push({path: '/article/edit', query: { id: currentArticle.id }})">
+        <md-icon>edit</md-icon>
+      </md-button>
+      <md-button class="md-fab md-mini" @click="confirmDelete">
+        <md-icon>delete</md-icon>
+      </md-button>
+    </template>
   </div>
   <div class="article-index">
     <div class="article-list">
@@ -27,6 +32,8 @@
     <div id="article-doc">
     </div>
   </div>
+  <md-dialog-confirm :md-title="'Are you sure?'" :md-content-html="'是否确认删除这篇文章？'" :md-ok-text="'确定'" :md-cancel-text="'取消'" @close='handleDelete' ref="confirmDelete">
+  </md-dialog-confirm>
 </div>
 </template>
 
@@ -53,6 +60,23 @@ export default {
         this.currentArticle = response.body || {}
         Markdown.parseMarkdownToDiv('article-doc', this.currentArticle.content)
       })
+    },
+    confirmDelete() {
+      this.$refs.confirmDelete.open()
+    },
+    handleDelete(confirm) {
+      if (confirm === 'ok') {
+        Api.delete('articles/' + this.currentArticle.id, {}, (response) => {
+          if (response.body.success) {
+            let id = this.currentArticle.id
+            this.currentArticle = null
+            document.getElementById('article-doc').innerHTML = ''
+
+            let index = this.articles.findIndex((element) => element.id === id)
+            this.articles.splice(index, 1)
+          }
+        })
+      }
     }
   }
 }
