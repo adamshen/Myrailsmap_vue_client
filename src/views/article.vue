@@ -1,14 +1,14 @@
 <template>
 <div>
   <div class="add-button">
-    <md-button class="md-fab md-mini" @click="$router.push({path: '/article/new'})">
+    <md-button class="md-fab md-mini" @click.native="$router.push({path: '/article/new'})">
       <md-icon>add</md-icon>
     </md-button>
     <template v-if="currentArticle">
-      <md-button class="md-fab md-mini" @click="$router.push({path: '/article/edit', query: { id: currentArticle.id }})">
+      <md-button class="md-fab md-mini" @click.native="$router.push({path: '/article/edit', query: { id: currentArticle.id }})">
         <md-icon>edit</md-icon>
       </md-button>
-      <md-button class="md-fab md-mini" @click="confirmDelete">
+      <md-button class="md-fab md-mini" @click.native="confirmDelete">
         <md-icon>delete</md-icon>
       </md-button>
     </template>
@@ -22,7 +22,7 @@
         </md-card-header>
 
         <md-list>
-          <md-list-item v-for="article of articles" @click="showArticle(article.id)">
+          <md-list-item v-for="article of articles" @click.native="showArticle(article.id)">
             <span v-text="article.title"></span>
           </md-list-item>
         </md-list>

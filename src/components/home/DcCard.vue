@@ -7,7 +7,7 @@
     </md-list-item>
 
     <md-button class="md-primary" v-if="checkCard.record_in_period" disabled>已提交今日打卡</md-button>
-    <md-button v-else class="md-primary" @click="submitCheck()">
+    <md-button v-else class="md-primary" @click.native="submitCheck()">
       打卡提交
       <md-icon>check</md-icon>
     </md-button>

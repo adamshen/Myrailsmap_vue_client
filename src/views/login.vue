@@ -21,7 +21,7 @@
 
       <div class="login-submit">
         <md-button v-if="submitting" disabled>提交中...</md-button>
-        <md-button v-else @click.stop="submit()">提交</md-button>
+        <md-button v-else @click.native.stop="submit()">提交</md-button>
       </div>
     </form>
   </div>

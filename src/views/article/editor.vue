@@ -3,13 +3,13 @@
   <h2 v-text="isNewArticle ? '编辑Markdown文章' : '新建Markdown文章'"></h2>
   <div class="editor-buttons">
     <md-button-toggle md-single>
-      <md-button class="md-toggle" @click="switchTo('editor')">编辑</md-button>
-      <md-button @click="switchTo('preview')">预览</md-button>
+      <md-button class="md-toggle" @click.native="switchTo('editor')">编辑</md-button>
+      <md-button @click.native="switchTo('preview')">预览</md-button>
     </md-button-toggle>
 
     <span style="flex: 1"></span>
     <md-button class="md-raised md-primary" disabled v-if="isSubmitting">提交中...</md-button>
-    <md-button class="md-raised md-primary" @click="submitArticle" v-else>提交</md-button>
+    <md-button class="md-raised md-primary" @click.native="submitArticle" v-else>提交</md-button>
   </div>
   <div class="editor-title-input">
     <div class="topic-selector">

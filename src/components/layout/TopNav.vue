@@ -1,13 +1,13 @@
 <template>
 <div>
   <md-toolbar>
-    <md-button class="md-icon-button" @click="toggleLeftSidenav">
+    <md-button class="md-icon-button" @click.native="toggleLeftSidenav">
       <md-icon>menu</md-icon>
     </md-button>
 
     <h2 class="md-title" style="flex: 1">MyRailsMap</h2>
 
-    <md-button class="md-icon-button" @click='switchTheme'>
+    <md-button class="md-icon-button" @click.native='switchTheme'>
       <md-icon>highlight</md-icon>
     </md-button>
   </md-toolbar>
@@ -23,7 +23,7 @@
 
     <div>
       <md-list>
-        <md-list-item @click="navTo('/home')">
+        <md-list-item @click.native="navTo('/home')">
           <md-icon>home</md-icon> <span>Home</span>
         </md-list-item>
 
@@ -32,12 +32,12 @@
           <span>Play</span>
           <md-list-expand>
             <md-list>
-              <md-list-item class="md-inset" @click="navTo('/play/flex')">Flex</md-list-item>
+              <md-list-item class="md-inset" @click.native="navTo('/play/flex')">Flex</md-list-item>
             </md-list>
           </md-list-expand>
         </md-list-item>
 
-        <md-list-item @click="navTo('/article')">
+        <md-list-item @click.native="navTo('/article')">
           <md-icon>library_books</md-icon> <span>Aticle</span>
         </md-list-item>
       </md-list>
