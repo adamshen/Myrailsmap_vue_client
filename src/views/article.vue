@@ -105,5 +105,6 @@ export default {
 #article-doc {
   flex: 1 0;
   padding-left: 4rem;
+  width: 750px;
 }
 </style>
