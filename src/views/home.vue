@@ -11,8 +11,8 @@
       <div class="banner-text">LEARN</div>
       <div class="banner-text">RAILS</div>
     </div>
-    <div class="banner-narrow" @click="toggleBannerNarrow()">
-      <i class="material-icons">{{ bannerNarrowIcon() }}</i>
+    <div class="banner-narrow">
+      <i class="material-icons" @click="toggleBannerNarrow()">{{ bannerNarrowIcon() }}</i>
     </div>
   </div>
   <div class="dairly-check">
@@ -250,11 +250,11 @@ export default {
   display: flex;
   display: -webkit-flex;
   justify-content: flex-end;
-  cursor: pointer;
 }
 
 .banner-narrow i {
   font-size: 2.5rem;
+  cursor: pointer;
 }
 
 .md-theme-blue-grey .home-banner {
