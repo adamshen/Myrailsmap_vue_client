@@ -1,5 +1,26 @@
 <template>
 <div>
+  <div class="profile">
+    <div class="profile-img">
+      <img src="../assets/ruby.jpg">
+    </div>
+    <div class="profile-content">
+      <h2>Hello, this is adam</h2>
+      <div class="chip-line">
+        <div class="chip">吃货</div>
+        <div class="chip">微胖</div>
+      </div>
+      <div class="chip-line">
+        <div class="chip">Rubyist</div>
+        <div class="chip">程序员</div>
+      </div>
+      <div class="chip-line">
+        <div class="chip">努力学习</div>
+        <div class="chip">争取节食</div>
+      </div>
+      <h2>I love <span class="ruby-red">ruby</span> and my wife</h2>
+    </div>
+  </div>
   <div class="dairly-check">
     <div class="dc-header">
       <div class="dc-icon">
@@ -28,27 +49,6 @@
     </div>
     <div class="cr-img">
       <img src="../assets/run.png">
-    </div>
-  </div>
-  <div class="profile">
-    <div class="profile-img">
-      <img src="../assets/ruby.jpg">
-    </div>
-    <div class="profile-content">
-      <h2>Hello, this is adam</h2>
-      <div class="chip-line">
-        <div class="chip">吃货</div>
-        <div class="chip">微胖</div>
-      </div>
-      <div class="chip-line">
-        <div class="chip">Rubyist</div>
-        <div class="chip">程序员</div>
-      </div>
-      <div class="chip-line">
-        <div class="chip">努力学习</div>
-        <div class="chip">争取节食</div>
-      </div>
-      <h2>I love <span class="ruby-red">ruby</span> and my wife</h2>
     </div>
   </div>
   <bottom-footer></bottom-footer>
@@ -116,6 +116,15 @@ export default {
   width: 100%;
 }
 
+.profile {
+  background: rgba(0, 150, 136, 0.35);
+}
+
+.dairly-check,
+.check-report {
+  background: #b1e5ff;
+}
+
 .dairly-check,
 .check-report,
 .profile {
@@ -134,10 +143,6 @@ export default {
   justify-content: center;
   align-items: center;
   flex-flow: row;
-}
-
-.check-report {
-  background: #b1e5ff;
 }
 
 .cr-content {
