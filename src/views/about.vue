@@ -56,8 +56,8 @@
 </template>
 
 <script>
-import BottomFooter from '../components/home/BottomFooter'
-import DcCard from '../components/home/DcCard'
+import BottomFooter from '../components/shared/BottomFooter'
+import DcCard from '../components/about/DcCard'
 import Chart from 'chart.js'
 import Api from '../lib/api'
 import Bus from '../lib/bus'

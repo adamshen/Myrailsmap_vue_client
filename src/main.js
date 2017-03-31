@@ -9,7 +9,7 @@ import 'vue-material/dist/vue-material.css'
 
 import Theme from './lib/theme.js'
 
-import Home from './views/home.vue'
+import About from './views/about.vue'
 import Play from './views/play.vue'
 import Flex from './views/play/flex.vue'
 import Article from './views/article.vue'
@@ -21,8 +21,8 @@ import ShowArticle from './views/article/show.vue'
 Vue.use(VueRouter)
 
 const routers = [{
-  path: '/home',
-  component: Home
+  path: '/about',
+  component: About
 }, {
   path: '/',
   redirect: 'article'

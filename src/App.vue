@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import TopNav from './components/layout/TopNav'
+import TopNav from './components/shared/TopNav'
 import AlertDialog from './components/shared/AlertDialog'
 
 export default {

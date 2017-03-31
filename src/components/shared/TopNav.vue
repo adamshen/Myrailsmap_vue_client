@@ -38,7 +38,7 @@
           </md-list-expand>
         </md-list-item>
 
-        <md-list-item @click.native="navTo('/home')">
+        <md-list-item @click.native="navTo('/about')">
           <md-icon>person</md-icon> <span>about</span>
         </md-list-item>
       </md-list>
