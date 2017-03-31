@@ -51,12 +51,10 @@
       <img src="../assets/run.png">
     </div>
   </div>
-  <bottom-footer></bottom-footer>
 </div>
 </template>
 
 <script>
-import BottomFooter from '../components/shared/BottomFooter'
 import DcCard from '../components/about/DcCard'
 import Chart from 'chart.js'
 import Api from '../lib/api'
@@ -71,7 +69,6 @@ export default {
     }
   },
   components: {
-    BottomFooter,
     DcCard
   },
   mounted() {

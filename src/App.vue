@@ -3,12 +3,14 @@
   <top-nav></top-nav>
   <router-view></router-view>
   <alert-dialog></alert-dialog>
+  <bottom-footer></bottom-footer>
 </div>
 </div>
 </template>
 
 <script>
 import TopNav from './components/shared/TopNav'
+import BottomFooter from './components/shared/BottomFooter'
 import AlertDialog from './components/shared/AlertDialog'
 
 export default {
@@ -18,6 +20,7 @@ export default {
   },
   components: {
     TopNav,
+    BottomFooter,
     AlertDialog
   }
 }
