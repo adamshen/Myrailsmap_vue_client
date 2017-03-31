@@ -10,6 +10,7 @@
 <script>
 import Markdown from '../../lib/markdown'
 import Api from '../../lib/api'
+import Bus from '../../lib/bus'
 
 export default {
   data() {
@@ -18,12 +19,16 @@ export default {
       content: ''
     }
   },
+  created() {
+    Bus.$emit('hide-footer')
+  },
   mounted() {
     Api.get('articles/' + this.$route.params.id, {}, (response) => {
       let article = response.body || {}
 
       this.title = article.title
       Markdown.parseMarkdownToDiv('article-content', article.content)
+      Bus.$emit('show-footer')
     })
   }
 }

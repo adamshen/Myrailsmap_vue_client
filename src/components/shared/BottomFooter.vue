@@ -1,5 +1,5 @@
 <template>
-<div class="footer-wrapper">
+<div class="footer-wrapper" v-show="showFooter">
   <div class="footer">
     <img class="ft-vue-logo" src="../../assets/logo.png">
     <p class="site-info"> Simple vue blog by @adam 2017 </p>
@@ -26,7 +26,14 @@
 </template>
 
 <script>
+import Bus from '../../lib/bus.js'
+
 export default {
+  data() {
+    return {
+      showFooter: true
+    }
+  },
   methods: {
     openDialog(ref) {
       this.$refs[ref].open()
@@ -34,6 +41,15 @@ export default {
     closeDialog(ref) {
       this.$refs[ref].close()
     }
+  },
+  mounted() {
+    Bus.$on('show-footer', () => {
+      this.showFooter = true
+    })
+
+    Bus.$on('hide-footer', () => {
+      this.showFooter = false
+    })
   }
 }
 </script>
