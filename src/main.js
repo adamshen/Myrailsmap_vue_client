@@ -25,7 +25,7 @@ const routers = [{
   component: Home
 }, {
   path: '/',
-  redirect: 'home'
+  redirect: 'article'
 }, {
   path: '/play',
   component: Play,

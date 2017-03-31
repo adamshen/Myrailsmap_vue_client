@@ -23,9 +23,10 @@
 
     <div>
       <md-list>
-        <md-list-item @click.native="navTo('/home')">
-          <md-icon>home</md-icon> <span>Home</span>
+        <md-list-item @click.native="navTo('/article')">
+          <md-icon>library_books</md-icon> <span>Aticle</span>
         </md-list-item>
+
 
         <md-list-item>
           <md-icon>videogame_asset</md-icon>
@@ -37,8 +38,8 @@
           </md-list-expand>
         </md-list-item>
 
-        <md-list-item @click.native="navTo('/article')">
-          <md-icon>library_books</md-icon> <span>Aticle</span>
+        <md-list-item @click.native="navTo('/home')">
+          <md-icon>person</md-icon> <span>about</span>
         </md-list-item>
       </md-list>
     </div>

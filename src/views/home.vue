@@ -22,7 +22,7 @@
       </div>
       <h3>打卡项目</h3>
     </div>
-    <div class="spinner">
+    <div class="spinner wrapper-center">
       <md-spinner v-if="checkCards.length === 0" md-indeterminate></md-spinner>
     </div>
     <div class="dc-container">
