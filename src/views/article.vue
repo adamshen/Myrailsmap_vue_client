@@ -1,15 +1,19 @@
 <template>
-<div class="article-profiles wrapper-center">
-  <h2 class="article-profiles-header">文章列表</h2>
-  <template v-for="article of articles">
+<div>
+  <rails-banner></rails-banner>
+  <div class="article-profiles wrapper-center">
+    <h2 class="article-profiles-header">文章列表</h2>
+      <template v-for="article of articles">
     <ar-card :article="article"></ar-card>
   </template>
+  </div>
 </div>
 </template>
 
 <script>
 import Api from '../lib/api'
 import ArCard from '../components/article/ArCard'
+import RailsBanner from '../components/article/RailsBanner'
 
 export default {
   data() {
@@ -18,7 +22,8 @@ export default {
     }
   },
   components: {
-    ArCard
+    ArCard,
+    RailsBanner
   },
   mounted() {
     Api.get('articles', {}, (response) => {
