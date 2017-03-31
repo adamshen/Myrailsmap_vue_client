@@ -80,7 +80,7 @@ export default {
       Api.login(this.email, this.password, (result) => {
         if (result.success) {
           this.$router.push({
-            path: '/home'
+            path: '/article'
           })
         } else {
           this.reInitData()
@@ -101,6 +101,7 @@ export default {
   display: flex;
   display: -webkit-flex;
   justify-content: center;
+  padding-bottom: 8rem;
 }
 
 .login-dialog {
