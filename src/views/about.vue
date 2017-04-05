@@ -113,10 +113,6 @@ export default {
   width: 100%;
 }
 
-.profile {
-  background: rgba(0, 150, 136, 0.35);
-}
-
 .dairly-check,
 .check-report {
   background: #b1e5ff;
