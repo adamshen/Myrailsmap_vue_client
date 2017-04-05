@@ -2,8 +2,9 @@
 <div>
   <rails-banner></rails-banner>
   <div class="article-profiles wrapper-center">
+    <spinner :ref="'spinner'"></spinner>
     <h2 class="article-profiles-header">文章列表</h2>
-      <template v-for="article of articles">
+    <template v-for="article of articles">
     <ar-card :article="article"></ar-card>
   </template>
   </div>
@@ -14,6 +15,7 @@
 import Api from '../lib/api'
 import ArCard from '../components/article/ArCard'
 import RailsBanner from '../components/article/RailsBanner'
+import Spinner from '../components/shared/Spinner'
 
 export default {
   data() {
@@ -23,11 +25,15 @@ export default {
   },
   components: {
     ArCard,
-    RailsBanner
+    RailsBanner,
+    Spinner
   },
   mounted() {
+    this.$refs.spinner.show()
+
     Api.get('articles', {}, (response) => {
       this.articles = response.body || []
+      this.$refs.spinner.hide()
     })
   }
 }

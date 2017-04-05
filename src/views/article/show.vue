@@ -1,5 +1,6 @@
 <template>
 <div class="article-main">
+  <spinner :ref="'spinner'"></spinner>
   <div class="article-title">
     <h2 v-text="title"></h2>
   </div>
@@ -11,8 +12,12 @@
 import Markdown from '../../lib/markdown'
 import Api from '../../lib/api'
 import Bus from '../../lib/bus'
+import Spinner from '../../components/shared/Spinner'
 
 export default {
+  components: {
+    Spinner
+  },
   data() {
     return {
       title: '',
@@ -23,11 +28,15 @@ export default {
     Bus.$emit('hide-footer')
   },
   mounted() {
+    this.$refs.spinner.show()
+
     Api.get('articles/' + this.$route.params.id, {}, (response) => {
       let article = response.body || {}
 
       this.title = article.title
       Markdown.parseMarkdownToDiv('article-content', article.content)
+
+      this.$refs.spinner.hide()
       Bus.$emit('show-footer')
     })
   }
